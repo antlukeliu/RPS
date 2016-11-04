@@ -20,18 +20,11 @@ public abstract class Player {
 		return value;
 	}
 
-	public void setValue(Roshambo value) {
+	public void setValue() {
 		this.value = value;
 	}
 	
-	public static Roshambo generateRoshambo(char rps){
-		if(rps == 'r'){
-			return Roshambo.ROCK;
-		}else if(rps == 's'){
-			return Roshambo.SCISSORS;
-		}else{
-			return Roshambo.PAPER;
-		}
-	}
+	public abstract Roshambo generateRoshambo();
+	
 }
 

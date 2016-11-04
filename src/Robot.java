@@ -15,11 +15,15 @@ public class Robot extends Player{
 		name = "Robot";
 	}
 	
-	public  Roshambo getValue() {
+	public Roshambo getValue() {
 		return value;
 	}
 
 	public void setValue() {
 		value = Roshambo.ROCK;
+	}
+	
+	public Roshambo generateRoshambo(){
+		return Roshambo.ROCK;
 	}
 }
