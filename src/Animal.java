@@ -1,9 +1,9 @@
+import java.util.Random;
 
 public class Animal extends Player{
 
 	public Animal(String name, Roshambo value){
 		super(name, value);
-		
 	}
 
 	public String getName() {
@@ -11,7 +11,7 @@ public class Animal extends Player{
 	}
 
 	public void setName() {
-		name = "Robot";
+		name = "Winnie the Pooh";
 	}
 	
 	public Roshambo getValue() {
@@ -19,12 +19,18 @@ public class Animal extends Player{
 	}
 
 	public void setValue() {
-		value = Roshambo.ROCK;
+		value = generateRoshambo();
 	}
 	
 	@Override
 	public Roshambo generateRoshambo() {
-		return Roshambo.SCISSORS;
+		Random rd = new Random();
+		int i = rd.nextInt(3) +1;
+		if(i == 1){
+			return Roshambo.PAPER;
+		}else if (i==2){
+			return Roshambo.SCISSORS;
+		}else return Roshambo.ROCK; 
 	}
 	
 }

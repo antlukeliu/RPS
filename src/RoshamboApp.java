@@ -11,46 +11,48 @@ public class RoshamboApp {
 		System.out.print("Enter your name: ");
 		String name = scan.nextLine();
 		
+		char choosingOpp = val.PlayerVal();
+		Player opponent = getOpponent(choosingOpp);
+		
+		int playCount = 0;
+		int oppCount = 0;
+		int drawCount = 0;
 		do{
 		
-		char choosingOpp = val.PlayerVal();
 		char rps = val.RPSVal();
 		Roshambo value = getPlayerValue(rps); 
-		
 		Player player = new Self(name, value);
-		Player opponent = getOpponent(choosingOpp);
-		String opp;
 		
-		
+		opponent.setName();
 		opponent.setValue();
+		Roshambo ch1 = player.getValue();
+		Roshambo ch2 = opponent.getValue();
 		
-		System.out.println("Player choice: "+player.getValue());
-		System.out.println( " choice: "+opponent.getValue());
-		compare(player.getName(), opponent.getName(), player.getValue(), opponent.getValue());
+		System.out.println("\nPlayer choice: "+ch1);
+		System.out.println(opponent.getName() +" choice: "+ch2);
+			
+		if((ch1==Roshambo.PAPER && ch2==Roshambo.ROCK) 
+				||(ch1==Roshambo.ROCK && ch2==Roshambo.SCISSORS)
+				||(ch1==Roshambo.SCISSORS && ch2==Roshambo.PAPER)){
+				System.out.println(player.getName() + " wins!");
+				playCount++;
+			}
+		else if(ch1==ch2){
+			System.out.println("Draw");
+			drawCount++;
+		}else{
+			System.out.println(opponent.getName() + " wins");
+			oppCount++;
+		}
+		System.out.printf("\n%s has %d wins - %d ties - %d loses", 
+				player.getName(), playCount, drawCount, oppCount);
 		char resp = val.YesOrNo();
 		cont = val.loopingAgain(resp);
 		}while(cont);
 		val.exitting(cont);
+		scan.close();
 
 	}
-	//Player2 "Robot" choice2 = "Rock"
-	//Replace String value with enum value later
-	public static void compare(String Player1, String Player2, Roshambo choice1, Roshambo choice2){
-		
-		//combination of paper and rock
-		//paper wins so we would say player 1 wins
-		//if choices are paper and rock will be true
-		
-		if((choice1==Roshambo.PAPER && choice2==Roshambo.ROCK) 
-				||(choice1==Roshambo.ROCK && choice2==Roshambo.SCISSORS)
-				||(choice1==Roshambo.SCISSORS && choice2==Roshambo.PAPER)){
-				System.out.println(Player1 + " wins");}
-		else if(choice1==choice2){
-			System.out.println("Draw");
-		}else{
-			System.out.println(Player2 + " wins");
-		}	
-		}
 	
 	public static Roshambo getPlayerValue(char rps){
 		if (rps == 'r'){
@@ -65,9 +67,9 @@ public class RoshamboApp {
 	public static Player getOpponent(char choosingOpp){
 		Player opponent;
 		if (choosingOpp == 'r'){
-			opponent = new Robot("Robot", Roshambo.PAPER);
+			opponent = new Robot(null, null);
 		} else{
-			opponent = new Animal("Animal", Roshambo.PAPER);
+			opponent = new Animal(null, null);
 		}
 		return opponent;
 	}

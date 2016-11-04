@@ -12,7 +12,7 @@ public class Robot extends Player{
 	}
 
 	public void setName() {
-		name = "Robot";
+		name = "Android3000";
 	}
 	
 	public Roshambo getValue() {

@@ -32,7 +32,7 @@ public class RPSValidator {
 		String response = "";
 		boolean cont = true;
 		while(cont){
-			System.out.print("\nChoose a opponent Animal, Robot (a/r): ");
+			System.out.print("\nChoose a opponent Animal or Robot (a/r): ");
 			response = sc.nextLine();
 			if(response.length() != 1){
 				continue;
@@ -55,7 +55,7 @@ public class RPSValidator {
 		String response = "";
 		boolean cont = true;
 		while(cont){
-			System.out.print("\nContinue to calculate? (y/n): ");
+			System.out.print("\nPlay Again? (y/n): ");
 			response = sc.nextLine();
 			if(response.length() != 1){
 				continue;
